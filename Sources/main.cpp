@@ -2,6 +2,7 @@
 #include "csvc.h"
 #include <CTRPluginFramework.hpp>
 #include "cheats.hpp"
+#include "ModMenu.hpp"
 
 #include <vector>
 
@@ -114,6 +115,7 @@ exit:
         InitMenu(*menu);
 
         // Launch menu and mainloop
+        menu->Callback(ModMenu);
         menu->Run();
 
         delete menu;
