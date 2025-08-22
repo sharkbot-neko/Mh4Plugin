@@ -33,6 +33,8 @@ namespace CTRPluginFramework
     }
 
     void ModMenu(void) {
+        run_cheat();
+
         if (!initd_modmenu) {
             InitModMenu();
             initd_modmenu = true;
@@ -104,8 +106,6 @@ namespace CTRPluginFramework
                 select_stack.pop_back();
             }
         }
-
-        run_cheat();
     }
 
 
