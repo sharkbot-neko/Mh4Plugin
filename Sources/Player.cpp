@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "lib/libPlayer.hpp"
 #include <string>
 
 namespace CTRPluginFramework
@@ -10,7 +11,7 @@ namespace CTRPluginFramework
         keyboard.IsHexadecimal(false);
     
         if (keyboard.Open(count) == 0) {
-            Process::Write32(0x0ECD5B4, count);
+            set_money(count);
         }
     }
 
