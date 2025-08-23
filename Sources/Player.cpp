@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "lib/libPlayer.hpp"
+#include "lib/libQuest.hpp"
 #include <string>
 
 namespace CTRPluginFramework
@@ -27,14 +28,7 @@ namespace CTRPluginFramework
     }
 
     void Name(MenuEntry *entry) {
-
-        u32 OffCheck;
-        constexpr u32 QUEST_OFFSET = 0x00E1CFE4;
-        constexpr u32 BASE_ADDRESS = 0x00000000;
-    
-        Process::Read32(BASE_ADDRESS + QUEST_OFFSET, OffCheck);
-    
-        if (OffCheck == 0x00000000) {
+        if (!is_the_quest()) {
             MessageBox("クエストに参加していないため、\n使用できません。")();
             return;
         }
@@ -44,9 +38,7 @@ namespace CTRPluginFramework
         Keyboard keyboard("名前を入力");
 
         if (keyboard.Open(string) == 0) {
-            u32 offset = 0x00000000;
-            Process::Read32(offset + 0x0E1CFE4, offset);
-            Process::WriteString(offset + 0x0000E80, string, StringFormat::Utf16);
+            set_name(string);
         }
     }
 

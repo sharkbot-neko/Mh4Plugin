@@ -1,4 +1,5 @@
 #include "CallFuncWrapper.hpp"
+#include "lib/libPlayer.hpp"
 
 namespace CTRPluginFramework
 {

@@ -17,4 +17,9 @@ namespace CTRPluginFramework
             return false;
         }
     }
+
+    void set_name(std::string string) {
+        Process::WriteString(get_quest_offset() + 0x0000E80, string, StringFormat::Utf16);
+
+    }
 }

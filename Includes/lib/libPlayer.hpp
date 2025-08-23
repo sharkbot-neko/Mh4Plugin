@@ -8,7 +8,7 @@ namespace CTRPluginFramework
 {
     using StringVector = std::vector<std::string>;
 
-    void set_money(int ammont);
+    void set_money(u32 ammont);
 }
 
 #endif

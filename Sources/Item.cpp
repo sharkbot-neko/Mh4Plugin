@@ -8,7 +8,7 @@ namespace CTRPluginFramework
     bool enabled_noitemdelete = false;
 
     void ItemGet(MenuEntry *entry) {
-        if (is_the_quest()) {
+        if (!is_the_quest()) {
             MessageBox("クエストに参加していないため、\n使用できません。")();
             return;
         }
