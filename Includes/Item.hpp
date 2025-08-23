@@ -15,6 +15,7 @@ namespace CTRPluginFramework
 
     void ItemGet(MenuEntry *entry);
     void InfStone(MenuEntry *entry);
+    void ItemNoDelete(MenuEntry *entry);
 }
 
 #endif

@@ -87,6 +87,7 @@ exit:
         MenuFolder *Item = new MenuFolder("アイテム");
         *Item += new MenuEntry("アイテムを取得", nullptr, ItemGet);
         *Item += new MenuEntry("無限の砥石", InfStone);
+        *Item += new MenuEntry("アイテム減らない", nullptr, ItemNoDelete);
         menu += Item;
 
         MenuFolder *quest = new MenuFolder("クエスト");

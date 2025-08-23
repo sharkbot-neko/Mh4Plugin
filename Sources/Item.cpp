@@ -3,6 +3,8 @@
 
 namespace CTRPluginFramework
 {
+    bool enabled_noitemdelete = false;
+
     void ItemGet(MenuEntry *entry) {
         u32 OffCheck;
         constexpr u32 QUEST_OFFSET = 0x00E1CFE4;
@@ -40,5 +42,18 @@ namespace CTRPluginFramework
             Process::Write32(Off + 0x0000100C , 0x00A80000);
             Process::Write32(Off + 0x00001010 , 0x000000FF);
         }
+    }
+
+    void ItemNoDelete(MenuEntry *entry) {
+        if (!enabled_noitemdelete) {
+            Process::Patch(0x009DE864, 0xE12FFF1E);
+            enabled_noitemdelete = !enabled_noitemdelete;
+            MessageBox("アイテム減らないコードをOnにしました。")();
+        } else {
+            Process::Patch(0x009DE864, 0xE92D4FF7);
+            enabled_noitemdelete = !enabled_noitemdelete;
+            MessageBox("アイテム減らないコードをOffにしました。")();
+        }
+        
     }
 }
