@@ -23,22 +23,17 @@ namespace CTRPluginFramework
         keyboard.IsHexadecimal(false);
     
         if (keyboard.Open(count) == 0) {
-            Process::Write32(0x10ECD5AC, count);
+            Process::Write32(0x00ECD5B0, count);
         }
     }
 
     void Name(MenuEntry *entry) {
-        if (!is_the_quest()) {
-            MessageBox("クエストに参加していないため、\n使用できません。")();
-            return;
-        }
-
         std::string string;
 
         Keyboard keyboard("名前を入力");
 
         if (keyboard.Open(string) == 0) {
-            set_name(string);
+            set_player_name(string);
         }
     }
 

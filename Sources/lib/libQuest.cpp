@@ -18,7 +18,7 @@ namespace CTRPluginFramework
         }
     }
 
-    void set_name(std::string string) {
+    void set_player_name_during_quest(std::string string) {
         Process::WriteString(get_quest_offset() + 0x0000E80, string, StringFormat::Utf16);
 
     }

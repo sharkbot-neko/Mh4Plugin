@@ -1,6 +1,9 @@
 #include "Player.hpp"
 #include <string>
 #include "CallFuncWrapper.hpp"
+#include "Quest.hpp"
+#include "Item.hpp"
+#include "lib/libItem.hpp"
 
 namespace CTRPluginFramework
 {
@@ -40,6 +43,52 @@ namespace CTRPluginFramework
     void open_status(MenuEntry *entry)
     {
         (CallFuncWrapper(0x0025b07c))(0);
+    }
+
+    u16 itemid = 0x0001;
+    int count_item = 1;
+
+    void fish_allitem(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            return;
+        }
+
+        if (Controller::IsKeysPressed(A + DPadUp)) {
+            u8 count;
+            const ITEM_MAP *selectedItem = SelectItemWithPagination();
+            
+            if (selectedItem == nullptr) {
+                OSD::Notify("No item selected.");
+                return;
+            }
+        
+            Keyboard keyboard("個数を入力");
+            keyboard.IsHexadecimal(false);
+
+            if (keyboard.Open(count) == 0) {
+                itemid = selectedItem->code;
+                count_item = count;
+            }
+        }
+
+        if (Controller::IsKeysPressed(A + DPadDown)) {
+            fished_item(itemid, count_item, 7);
+        }
+    }
+
+    void Quest_playerName(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        std::string string;
+
+        Keyboard keyboard("名前を入力");
+
+        if (keyboard.Open(string) == 0) {
+            set_player_name_during_quest(string);
+        }
     }
 
 }

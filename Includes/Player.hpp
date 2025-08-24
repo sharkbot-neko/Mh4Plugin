@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "CTRPluginFramework.hpp"
+#include "lib/libQuest.hpp"
 
 namespace CTRPluginFramework
 {

@@ -11,9 +11,9 @@ namespace CTRPluginFramework
 
         if(Controller::IsKeysDown(DPadUp + L))
         {
-            if(Process::Read32(offset + 0x00E1CFE4 , cmp32) && cmp32 != 0x00000000)
+            if(Process::Read32(offset + 0x00E248F8 , cmp32) && cmp32 != 0x00000000)
             {
-                Process::Read32(offset + 0x00E1CFE4 , data32);
+                Process::Read32(offset + 0x00E248F8 , data32);
                 offset = data32;
                 Process::Read32(offset + 0x00000E3D, data32);
                 data32 += 0x00001A80;
@@ -25,7 +25,7 @@ namespace CTRPluginFramework
         data32 = 0;
         if(Controller::IsKeysDown(DPadDown + L))
         {
-            Process::Read32(offset + 0x00E1CFE4 , data32);
+            Process::Read32(offset + 0x00E248F8 , data32);
             offset = data32;
             Process::Read32(offset + 0x0000E3D , data32);
             data32 += 0xFFF9E580;

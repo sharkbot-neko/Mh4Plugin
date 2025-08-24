@@ -15,6 +15,8 @@ namespace CTRPluginFramework
     void kieraji_inf(MenuEntry *entry);
     void shukai_armor(MenuEntry *entry);
     void open_status(MenuEntry *entry);
+    void Quest_playerName(MenuEntry *entry);
+    void fish_allitem(MenuEntry *entry);
 }
 
 #endif

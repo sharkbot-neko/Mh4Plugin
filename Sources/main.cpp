@@ -72,7 +72,7 @@ exit:
     void    InitMenu(PluginMenu &menu)
     {
         MenuFolder *player = new MenuFolder("プレイヤー");
-        *player += new MenuEntry("名前", nullptr, Name, "クエスト中専用です。");
+        *player += new MenuEntry("名前", nullptr, Name);
         *player += new MenuEntry("コメント", nullptr, Comment);
         *player += new MenuEntry("お金", nullptr, Money);
         *player += new MenuEntry("ハンターランク", nullptr, HunterRank);
@@ -85,18 +85,20 @@ exit:
         menu += movement;
 
         MenuFolder *Item = new MenuFolder("アイテム");
-        *Item += new MenuEntry("アイテムを取得", nullptr, ItemGet);
+        *Item += new MenuEntry("アイテムを取得(関数)", nullptr, ItemGet);
         *Item += new MenuEntry("無限の砥石", InfStone);
         *Item += new MenuEntry("アイテム減らない", nullptr, ItemNoDelete);
         menu += Item;
 
         MenuFolder *quest = new MenuFolder("クエスト");
+        *quest += new MenuEntry("クエスト中のプレイヤー名", nullptr, Quest_playerName, "クエスト中専用です");
+        *quest += new MenuEntry("アイテムを釣る(関数)", fish_allitem, "上キーとAボタンでアイテム選択、\n下キーとAボタンで釣る。");
         *quest += new MenuEntry("クエストクリア", nullptr, quest_clear);
         *quest += new MenuEntry("クエスト即帰還", nullptr, quest_gohome);
         *quest += new MenuEntry("定型文編集画面", teikei_text, "YとLキーを押して定型文・チャットを開きます。");
         *quest += new MenuEntry("切れ味無限", kieraji_inf);
-        *quest += new MenuEntry("集会所で装備変更", shukai_armor);
-        *quest += new MenuEntry("ステータスを開く", nullptr, open_status);
+        *quest += new MenuEntry("集会所で装備変更(関数)", shukai_armor, "一度ステータスを開いてから実行すること。");
+        // *quest += new MenuEntry("ステータスを開く", nullptr, open_status);
         menu += quest;
 
         MenuFolder *camera = new MenuFolder("カメラ");

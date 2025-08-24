@@ -11,7 +11,7 @@ namespace CTRPluginFramework
 
     u32 get_quest_offset();
     bool is_the_quest();
-    void set_name(std::string string);
+    void set_player_name_during_quest(std::string string);
 }
 
 #endif

@@ -12,6 +12,7 @@ namespace CTRPluginFramework
 
     void add_item(int itemid, int count);
     void set_item(u16 itemid, u8 count, int basho);
+    void fished_item(u16 itemid, int count, int message);
 }
 
 #endif

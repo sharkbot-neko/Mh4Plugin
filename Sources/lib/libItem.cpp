@@ -15,4 +15,9 @@ namespace CTRPluginFramework
         Process::Write32(offset + 0x000100C + i, itemid * 0x10000);
         Process::Write8(offset + 0x0001010 + i, count);
     }
+
+    void fished_item(u16 itemid, int count, int message) {
+        u32 OffCheck = get_quest_offset();
+        (CallFuncWrapper(0x009fc944))(OffCheck, itemid, 0, message, count, OffCheck);
+    }
 }
