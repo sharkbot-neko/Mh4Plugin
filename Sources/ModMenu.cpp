@@ -70,7 +70,7 @@ namespace CTRPluginFramework
             return true;
         });
 
-        if (Controller::IsKeysPressed(R + DPadLeft)) {
+        if (Controller::IsKeysPressed(R + DPadRight)) {
             opend_modmenu = !opend_modmenu;
         }
 

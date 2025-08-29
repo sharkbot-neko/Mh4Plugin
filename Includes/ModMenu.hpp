@@ -1,5 +1,5 @@
-#ifdef _ITEM_HPP
-#define _ITEM_HPP
+#ifndef _MODMENU_HPP
+#define _MODMENU_HPP
 
 #include <vector>
 #include <string>

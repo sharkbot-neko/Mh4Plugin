@@ -106,10 +106,40 @@ exit:
         menu += camera;
     }
 
+    void socInit_Plugin() {
+        u32 *socBuffer = nullptr;
+        constexpr u32 SOC_BUFFER_ADDR = 0x7500000;
+        constexpr u32 SOC_BUFFER_SIZE = 0x100000;
+
+        u8 *soundBuffer = nullptr;
+        u8 *micBuffer = nullptr;
+
+        Result ret = RL_SUCCESS;
+        if (System::IsCitra()) {
+            socBuffer = (u32 *)aligned_alloc(0x1000, SOC_BUFFER_SIZE);
+            if (!socBuffer)
+            ret = RL_FATAL;
+        } else
+            ret = svcControlMemoryUnsafe((u32 *)&socBuffer, SOC_BUFFER_ADDR, SOC_BUFFER_SIZE, MemOp(MEMOP_REGION_SYSTEM | MEMOP_ALLOC), MemPerm(MEMPERM_READ | MEMPERM_WRITE));
+
+        if (R_FAILED(ret) || !socBuffer)
+            OSD::Notify("alloc socBuffer failed");
+        else {
+            ret = socInit(socBuffer, SOC_BUFFER_SIZE);
+            if (R_FAILED(ret)) {
+            OSD::Notify(Utils::Format("socInit: 0x%lX failed", ret));
+            socExit();
+            } else
+            OSD::Notify("socInit success");
+        }
+    }
+
     int     main(void)
     {
-        PluginMenu *menu = new PluginMenu("CTRPF MonsterHunter 4", 1, 0, 0,
-                                            "A blank template plugin.\nGives you access to the ActionReplay and others tools.");
+        PluginMenu *menu = new PluginMenu("CTRPF MonsterHunter 4 OLD", 1, 0, 0,
+                                            "モンスターハンター4のOLD専用プラグイン。");
+                                            
+        
 
         // Synnchronize the menu with frame event
         menu->SynchronizeWithFrame(true);

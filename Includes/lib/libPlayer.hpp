@@ -10,6 +10,7 @@ namespace CTRPluginFramework
 
     void set_money(u32 ammont);
     void set_player_name(std::string string);
+    std::string get_player_name();
 }
 
 #endif
