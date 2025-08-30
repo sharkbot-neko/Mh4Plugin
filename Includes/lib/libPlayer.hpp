@@ -9,8 +9,11 @@ namespace CTRPluginFramework
     using StringVector = std::vector<std::string>;
 
     void set_money(u32 ammont);
+    u32 get_money();
     void set_player_name(std::string string);
     std::string get_player_name();
+    void set_player_comment(std::string string);
+    std::string get_player_comment();
 }
 
 #endif

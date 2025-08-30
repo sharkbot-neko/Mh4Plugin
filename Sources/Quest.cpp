@@ -4,6 +4,7 @@
 #include "Quest.hpp"
 #include "Item.hpp"
 #include "lib/libItem.hpp"
+#include "lib/libAction.hpp"
 
 namespace CTRPluginFramework
 {
@@ -91,4 +92,36 @@ namespace CTRPluginFramework
         }
     }
 
+    void nikuyaku_every(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        excute_nikuyaki();
+    }
+
+    u16 actionid = 0;
+
+    void excute_act(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            return;
+        }
+
+        if (Controller::IsKeysPressed(L + DPadUp)) {
+        
+            u16 _actionid;
+
+            Keyboard keyboard("アクションidを入力");
+            keyboard.IsHexadecimal(false);
+
+            if (keyboard.Open(_actionid) == 0) {
+                actionid = _actionid;
+            }
+        }
+
+        if (Controller::IsKeysPressed(L + DPadDown)) {
+            excute_action(actionid);
+        }
+    }
 }

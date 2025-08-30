@@ -93,6 +93,8 @@ exit:
         MenuFolder *quest = new MenuFolder("クエスト");
         *quest += new MenuEntry("クエスト中のプレイヤー名", nullptr, Quest_playerName, "クエスト中専用です");
         *quest += new MenuEntry("アイテムを釣る(関数)", fish_allitem, "上キーとAボタンでアイテム選択、\n下キーとAボタンで釣る。");
+        *quest += new MenuEntry("アクション実行(関数)", excute_act, "上キーとLキーでid設定、\n下キーとLキーで実行。");
+        *quest += new MenuEntry("どこでも肉焼き", nullptr, nikuyaku_every);
         *quest += new MenuEntry("クエストクリア", nullptr, quest_clear);
         *quest += new MenuEntry("クエスト即帰還", nullptr, quest_gohome);
         *quest += new MenuEntry("定型文編集画面", teikei_text, "YとLキーを押して定型文・チャットを開きます。");

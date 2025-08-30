@@ -8,7 +8,9 @@ namespace CTRPluginFramework
     void Money(MenuEntry *entry) {
         u32 count;
 
-        Keyboard keyboard("金額を入力");
+        std::string now_money = Utils::Format("金額を入力 (現在: %dz)", get_money());
+
+        Keyboard keyboard(now_money);
         keyboard.IsHexadecimal(false);
     
         if (keyboard.Open(count) == 0) {
@@ -30,7 +32,9 @@ namespace CTRPluginFramework
     void Name(MenuEntry *entry) {
         std::string string;
 
-        Keyboard keyboard("名前を入力");
+        std::string now_name = Utils::Format("名前を入力 (現在: %s)", get_player_name());
+
+        Keyboard keyboard(now_name);
 
         if (keyboard.Open(string) == 0) {
             set_player_name(string);
@@ -43,7 +47,7 @@ namespace CTRPluginFramework
         Keyboard keyboard("コメントを入力");
 
         if (keyboard.Open(string) == 0) {
-            Process::WriteString(0x0F39DF0, string, StringFormat::Utf16);
+            set_player_comment(string);
         }
     }
 

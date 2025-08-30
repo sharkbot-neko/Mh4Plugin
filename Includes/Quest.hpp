@@ -17,6 +17,8 @@ namespace CTRPluginFramework
     void open_status(MenuEntry *entry);
     void Quest_playerName(MenuEntry *entry);
     void fish_allitem(MenuEntry *entry);
+    void excute_act(MenuEntry *entry);
+    void nikuyaku_every(MenuEntry *entry);
 }
 
 #endif
