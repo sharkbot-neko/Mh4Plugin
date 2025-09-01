@@ -108,13 +108,17 @@ exit:
         *quest += new MenuEntry("クエスト即帰還", nullptr, quest_gohome);
         *quest += new MenuEntry("定型文編集画面", teikei_text, "YとLキーを押して定型文・チャットを開きます。");
         *quest += new MenuEntry("切れ味無限", kieraji_inf);
-        *quest += new MenuEntry("集会所で装備変更(関数)", shukai_armor, "一度ステータスを開いてから実行すること。");
+        *quest += new MenuEntry("集会所で装備変更", shukai_armor, "一度ステータスを開いてから実行すること。");
         // *quest += new MenuEntry("ステータスを開く", nullptr, open_status);
         menu += quest;
 
         MenuFolder *camera = new MenuFolder("カメラ");
         *camera += new MenuEntry("ズーム", Zoom);
         menu += camera;
+
+        MenuFolder *test = new MenuFolder("テストコード・没コード");
+        *test += new MenuEntry("プレイヤーアップデート", UpdatePlayer);
+        menu += test;
     }
 
     void socInit_Plugin() {

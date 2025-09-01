@@ -9,6 +9,7 @@ namespace CTRPluginFramework
     using StringVector = std::vector<std::string>;
 
     u32 get_player_offset();
+    u32 get_net_player_offset();
     void set_money(u32 ammont);
     u32 get_money();
     void set_player_name(std::string string);
@@ -20,6 +21,9 @@ namespace CTRPluginFramework
     // アイルー系
     u32 get_cat_struct_addres();
     void edit_cat_color(u8 blue, u8 green, u8 red);
+
+    // 通信系？
+    void update_player();
 }
 
 #endif

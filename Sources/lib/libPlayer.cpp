@@ -9,9 +9,15 @@ namespace CTRPluginFramework
         return value;
     }
 
+    u32 get_net_player_offset() {
+        u32 value;
+        Process::Read32(0x00106A3C, value);
+        return value;
+    }
+
     u32 get_money() {
         u32 value;
-        Process::Read32(0x0ECD5B4, value);
+        Process::Read32(0x00C85378, value);
         return value;
     }
 
@@ -57,5 +63,13 @@ namespace CTRPluginFramework
     void reload_guildcard() {
         u32 offset = get_player_offset();
         (CallFuncWrapper(0x00a81958))(offset);
+    }
+
+    void update_player() {
+        u32 offset = get_net_player_offset();
+        // 0x152 バイト以上確保
+        unsigned char buffer[0x152];
+        CallFuncWrapper func(0x00a8616c);
+        func(offset, reinterpret_cast<u32>(buffer));
     }
 }

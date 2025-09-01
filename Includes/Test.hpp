@@ -8,6 +8,8 @@
 namespace CTRPluginFramework
 {
     using StringVector = std::vector<std::string>;
+
+    void UpdatePlayer(MenuEntry *entry);
 }
 
 #endif

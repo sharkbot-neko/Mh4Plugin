@@ -11,6 +11,7 @@
 #include "Quest.hpp"
 #include "Camera.hpp"
 #include "Movement.hpp"
+#include "Test.hpp"
 
 namespace CTRPluginFramework
 {
