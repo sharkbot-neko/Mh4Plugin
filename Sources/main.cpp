@@ -79,6 +79,13 @@ exit:
         *player += new MenuEntry("スピード変更", Speed);
         menu += player;
 
+        MenuFolder *cat = new MenuFolder("アイルー");
+
+        *cat += new MenuEntry("アイルーの色変更", nullptr, CatColor);
+        *cat += new MenuEntry("虹色アイルー", RaibowCat);
+
+        *player += cat;
+
         MenuFolder *movement = new MenuFolder("移動");
         // *movement += new MenuEntry("Z座標移動", Z_Up_Down, "L+UpとL+Downで移動します。");
         *movement += new MenuEntry("座標移動", CoordMove, "L+上下左右で移動します。");
@@ -94,7 +101,9 @@ exit:
         *quest += new MenuEntry("クエスト中のプレイヤー名", nullptr, Quest_playerName, "クエスト中専用です");
         *quest += new MenuEntry("アイテムを釣る(関数)", fish_allitem, "上キーとAボタンでアイテム選択、\n下キーとAボタンで釣る。");
         *quest += new MenuEntry("アクション実行(関数)", excute_act, "上キーとLキーでid設定、\n下キーとLキーで実行。");
-        *quest += new MenuEntry("どこでも肉焼き", nullptr, nikuyaku_every);
+        *quest += new MenuEntry("どこでも釣りをする(関数)", fish_excute, "Yキーで釣る。");
+        *quest += new MenuEntry("どこでも肉焼き(関数)", nullptr, nikuyaku_every);
+        *quest += new MenuEntry("キャンプに移動(関数)", nullptr, go_canpu);
         *quest += new MenuEntry("クエストクリア", nullptr, quest_clear);
         *quest += new MenuEntry("クエスト即帰還", nullptr, quest_gohome);
         *quest += new MenuEntry("定型文編集画面", teikei_text, "YとLキーを押して定型文・チャットを開きます。");

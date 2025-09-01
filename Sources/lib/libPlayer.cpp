@@ -3,6 +3,12 @@
 
 namespace CTRPluginFramework
 {
+    u32 get_player_offset() {
+        u32 value;
+        Process::Read32(0x00106A3C, value);
+        return value;
+    }
+
     u32 get_money() {
         u32 value;
         Process::Read32(0x0ECD5B4, value);
@@ -31,5 +37,25 @@ namespace CTRPluginFramework
         std::string string;
         Process::ReadString(0x0F39DF0, string, 26, StringFormat::Utf16);
         return string;
+    }
+
+    u32 get_cat_struct_addres() {
+        u32 offset = get_player_offset();
+        u32 addres = (CallFuncWrapper(0x00a814ec))(offset);
+        return addres;
+    }
+
+    void edit_cat_color(u8 red, u8 green, u8 blue) {
+        u32 address = get_cat_struct_addres();    
+        u32 color_address = address + 0x20;
+
+        Process::Write8(color_address + 0, blue);
+        Process::Write8(color_address + 1, green);
+        Process::Write8(color_address + 2, red);
+    }
+
+    void reload_guildcard() {
+        u32 offset = get_player_offset();
+        (CallFuncWrapper(0x00a81958))(offset);
     }
 }

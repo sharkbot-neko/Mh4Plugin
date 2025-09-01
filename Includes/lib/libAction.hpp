@@ -12,6 +12,8 @@ namespace CTRPluginFramework
     
     // 肉焼き処理
     void excute_nikuyaki();
+    // 釣り処理
+    void excute_fish();
 
     // アクション実行
     void excute_action(int actionid);

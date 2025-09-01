@@ -101,6 +101,25 @@ namespace CTRPluginFramework
         excute_nikuyaki();
     }
 
+    void go_canpu(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        excute_action(17);
+    }
+
+    void fish_excute(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            return;
+        }
+
+        if (Controller::IsKeysPressed(Y)) {
+            excute_fish();
+        }
+    }
+
     u16 actionid = 0;
 
     void excute_act(MenuEntry *entry) {
@@ -113,7 +132,6 @@ namespace CTRPluginFramework
             u16 _actionid;
 
             Keyboard keyboard("アクションidを入力");
-            keyboard.IsHexadecimal(false);
 
             if (keyboard.Open(_actionid) == 0) {
                 actionid = _actionid;

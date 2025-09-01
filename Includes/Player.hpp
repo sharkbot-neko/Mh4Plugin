@@ -15,6 +15,10 @@ namespace CTRPluginFramework
     void Comment(MenuEntry *entry);
     void HunterRank(MenuEntry *entry);
     void Speed(MenuEntry *entry);
+
+    // アイルー系
+    void CatColor(MenuEntry *entry);
+    void RaibowCat(MenuEntry *entry);
 }
 
 #endif

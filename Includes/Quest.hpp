@@ -19,6 +19,8 @@ namespace CTRPluginFramework
     void fish_allitem(MenuEntry *entry);
     void excute_act(MenuEntry *entry);
     void nikuyaku_every(MenuEntry *entry);
+    void go_canpu(MenuEntry *entry);
+    void fish_excute(MenuEntry *entry);
 }
 
 #endif

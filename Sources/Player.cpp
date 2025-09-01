@@ -51,6 +51,24 @@ namespace CTRPluginFramework
         }
     }
 
+    void CatColor(MenuEntry *entry) {
+        u8 blue;
+        u8 green;
+        u8 red;
+
+        if (Keyboard("アイルーの色を入力 (red)").Open(red) == 0) {}
+        if (Keyboard("アイルーの色を入力 (green)").Open(green) == 0) {}
+        if (Keyboard("アイルーの色を入力 (blue)").Open(blue) == 0) {}
+        edit_cat_color(blue, green, red);
+    }
+
+    void RaibowCat(MenuEntry *entry) {
+        u8 blue = Utils::Random(0x00, 0xFF);
+        u8 green = Utils::Random(0x00, 0xFF);
+        u8 red = Utils::Random(0x00, 0xFF);
+        edit_cat_color(blue, green, red);
+    }
+
     void Speed(MenuEntry *entry) {
         u32 offset;
         u32 cmp32;
