@@ -16,6 +16,10 @@ namespace CTRPluginFramework
     void HunterRank(MenuEntry *entry);
     void Speed(MenuEntry *entry);
 
+    // コード系
+    void MoneyMaxUp(MenuEntry *entry);
+    void MoneyMinusNoReset(MenuEntry *entry);
+
     // アイルー系
     void CatColor(MenuEntry *entry);
     void RaibowCat(MenuEntry *entry);

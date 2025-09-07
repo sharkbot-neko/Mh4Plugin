@@ -5,8 +5,6 @@
 
 namespace CTRPluginFramework
 {
-    bool enabled_noitemdelete = false;
-
     void ItemGet(MenuEntry *entry) {
         if (!is_the_quest()) {
             MessageBox("クエストに参加していないため、\n使用できません。")();
@@ -43,15 +41,29 @@ namespace CTRPluginFramework
     }
 
     void ItemNoDelete(MenuEntry *entry) {
-        if (!enabled_noitemdelete) {
-            Process::Patch(0x009DE864, 0xE12FFF1E);
-            enabled_noitemdelete = !enabled_noitemdelete;
-            MessageBox("アイテム減らないコードをOnにしました。")();
-        } else {
-            Process::Patch(0x009DE864, 0xE92D4FF7);
-            enabled_noitemdelete = !enabled_noitemdelete;
-            MessageBox("アイテム減らないコードをOffにしました。")();
-        }
-        
+        const std::vector<std::string> enable_or_disable = {
+            "有効",
+            "無効"
+        };
+
+        Keyboard keyboard("アイテム減らない", enable_or_disable);
+
+		int index = keyboard.Open();
+		if(index < 0)
+			return;
+
+		switch (index) {
+			default: break;
+
+            case 0: {
+                Process::Patch(0x009DE864, 0xE12FFF1E);
+                break;
+            }
+
+            case 1: {
+                Process::Patch(0x009DE864, 0xE92D4FF7);
+                break;
+            }
+        };
     }
 }

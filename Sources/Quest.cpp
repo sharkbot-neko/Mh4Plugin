@@ -110,6 +110,33 @@ namespace CTRPluginFramework
         excute_action(17);
     }
 
+    void open_box_1(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        excute_action(0x70);
+    }
+
+    void open_box_2(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        excute_action(0x71);
+    }
+
+    void toishi_run(MenuEntry *entry) {
+        if (!is_the_quest()) {
+            MessageBox("クエストに参加していないため、\n使用できません。")();
+            return;
+        }
+
+        excute_action(0x5a);
+    }
+
     void fish_excute(MenuEntry *entry) {
         if (!is_the_quest()) {
             return;

@@ -75,6 +75,8 @@ exit:
         *player += new MenuEntry("名前", nullptr, Name);
         *player += new MenuEntry("コメント", nullptr, Comment);
         *player += new MenuEntry("お金", nullptr, Money);
+        *player += new MenuEntry("財布の最大を拡張", nullptr, MoneyMaxUp);
+        *player += new MenuEntry("財布がマイナスでも0にならない", nullptr, MoneyMinusNoReset);
         *player += new MenuEntry("ハンターランク", nullptr, HunterRank);
         *player += new MenuEntry("スピード変更", Speed);
         menu += player;
@@ -103,6 +105,9 @@ exit:
         *quest += new MenuEntry("アクション実行(関数)", excute_act, "上キーとLキーでid設定、\n下キーとLキーで実行。");
         *quest += new MenuEntry("どこでも釣りをする(関数)", fish_excute, "Yキーで釣る。");
         *quest += new MenuEntry("どこでも肉焼き(関数)", nullptr, nikuyaku_every);
+        *quest += new MenuEntry("支給品ボックスを開く(関数)", nullptr, open_box_1);
+        *quest += new MenuEntry("納品ボックスを開く(関数)", nullptr, open_box_2);
+        *quest += new MenuEntry("砥石を使う(関数)", nullptr, toishi_run);
         *quest += new MenuEntry("キャンプに移動(関数)", nullptr, go_canpu);
         *quest += new MenuEntry("クエストクリア", nullptr, quest_clear);
         *quest += new MenuEntry("クエスト即帰還", nullptr, quest_gohome);
@@ -118,7 +123,14 @@ exit:
 
         MenuFolder *test = new MenuFolder("テストコード・没コード");
         *test += new MenuEntry("プレイヤーアップデート", UpdatePlayer);
+        *test += new MenuEntry("Arm.cppを使ったアイテム減らない", nullptr, TestingArm);
         menu += test;
+
+        MenuFolder *debug = new MenuFolder("デバッグコード");
+        *debug += new MenuEntry("ゲームクラッシュ", nullptr, [](MenuEntry *entry){
+            abort();
+        });
+        menu += debug;
     }
 
     void socInit_Plugin() {
@@ -164,6 +176,7 @@ exit:
 
         // Launch menu and mainloop
         menu->Callback(ModMenu);
+
         menu->Run();
 
         delete menu;

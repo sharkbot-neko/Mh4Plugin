@@ -18,6 +18,60 @@ namespace CTRPluginFramework
         }
     }
 
+    void MoneyMaxUp(MenuEntry *entry) {
+        const std::vector<std::string> enable_or_disable = {
+            "有効",
+            "無効"
+        };
+
+        Keyboard keyboard("財布に最大以上に入れられる", enable_or_disable);
+
+        int index = keyboard.Open();
+        if (index < 0)
+            return;
+
+        switch (index) {
+            default: break;
+
+            case 0: {
+                Process::Patch(0x00A87584, 0xE320F000);
+                break;
+            }
+
+            case 1: {
+                Process::Patch(0x00A87584, 0xC1A00003);
+                break;
+            }
+        }
+    }
+
+    void MoneyMinusNoReset(MenuEntry *entry) {
+        const std::vector<std::string> enable_or_disable = {
+            "有効",
+            "無効"
+        };
+
+        Keyboard keyboard("財布がマイナスでもリセットされない", enable_or_disable);
+
+		int index = keyboard.Open();
+		if(index < 0)
+			return;
+
+		switch (index) {
+			default: break;
+
+            case 0: {
+                Process::Patch(0x00A87590, 0xE320F000);
+                break;
+            }
+
+            case 1: {
+                Process::Patch(0x00A87590, 0xD3A00000);
+                break;
+            }
+        };
+    }
+
     void HunterRank(MenuEntry *entry) {
         u32 count;
 

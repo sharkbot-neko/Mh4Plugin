@@ -21,6 +21,9 @@ namespace CTRPluginFramework
     void nikuyaku_every(MenuEntry *entry);
     void go_canpu(MenuEntry *entry);
     void fish_excute(MenuEntry *entry);
+    void open_box_1(MenuEntry *entry);
+    void open_box_2(MenuEntry *entry);
+    void toishi_run(MenuEntry *entry);
 }
 
 #endif
