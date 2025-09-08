@@ -23,6 +23,8 @@ namespace CTRPluginFramework
     // アイルー系
     void CatColor(MenuEntry *entry);
     void RaibowCat(MenuEntry *entry);
+    void CatName(MenuEntry *entry);
+    void CatBuki(MenuEntry *entry);
 }
 
 #endif

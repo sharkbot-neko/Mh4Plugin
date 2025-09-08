@@ -24,6 +24,7 @@ namespace CTRPluginFramework
     void open_box_1(MenuEntry *entry);
     void open_box_2(MenuEntry *entry);
     void toishi_run(MenuEntry *entry);
+    void FreeQuest(MenuEntry *entry);
 }
 
 #endif

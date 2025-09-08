@@ -84,14 +84,13 @@ namespace CTRPluginFramework
     }
 
     void Name(MenuEntry *entry) {
-        std::string string;
-
-        std::string now_name = Utils::Format("名前を入力 (現在: %s)", get_player_name());
+        std::string input;
+        std::string now_name = Utils::Format("名前を入力 (現在: %s)", get_player_name().c_str());
 
         Keyboard keyboard(now_name);
 
-        if (keyboard.Open(string) == 0) {
-            set_player_name(string);
+        if (keyboard.Open(input) == 0) {
+            set_player_name(input);
         }
     }
 
@@ -121,6 +120,28 @@ namespace CTRPluginFramework
         u8 green = Utils::Random(0x00, 0xFF);
         u8 red = Utils::Random(0x00, 0xFF);
         edit_cat_color(blue, green, red);
+    }
+
+    void CatName(MenuEntry *entry) {
+        std::string input;
+        std::string now_name = Utils::Format("アイルーの名前を入力 (現在: %s)", get_cat_name().c_str());
+
+        Keyboard keyboard(now_name);
+
+        if (keyboard.Open(input) == 0) {
+            edit_cat_name(input);
+        }
+    }
+
+    void CatBuki(MenuEntry *entry) {
+        u8 head;
+        u8 body;
+        u8 buki;
+
+        if (Keyboard("アイルーの頭装備idを入力").Open(head) == 0) {}
+        if (Keyboard("アイルーの体装備idを入力").Open(body) == 0) {}
+        if (Keyboard("アイルーの武器idを入力").Open(buki) == 0) {}
+        edit_cat_soubi(head, body, buki);
     }
 
     void Speed(MenuEntry *entry) {

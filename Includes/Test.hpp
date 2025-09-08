@@ -11,6 +11,7 @@ namespace CTRPluginFramework
 
     void UpdatePlayer(MenuEntry *entry);
     void TestingArm(MenuEntry *entry);
+    void drawText(MenuEntry *entry);
 }
 
 #endif

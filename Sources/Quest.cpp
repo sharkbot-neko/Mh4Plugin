@@ -169,4 +169,31 @@ namespace CTRPluginFramework
             excute_action(actionid);
         }
     }
+
+    void FreeQuest(MenuEntry *entry) {
+        const std::vector<std::string> enable_or_disable = {
+            "有効",
+            "無効"
+        };
+
+        Keyboard keyboard("無料のクエスト", enable_or_disable);
+
+		int index = keyboard.Open();
+		if(index < 0)
+			return;
+
+		switch (index) {
+			default: break;
+
+            case 0: {
+                Process::Patch(0x0086EED0, 0xE320F000);
+                break;
+            }
+
+            case 1: {
+                Process::Patch(0x0086EED0, 0xEB0861A5);
+                break;
+            }
+        };
+    }
 }

@@ -83,6 +83,8 @@ exit:
 
         MenuFolder *cat = new MenuFolder("アイルー");
 
+        *cat += new MenuEntry("アイルーの名前を変更", nullptr, CatName);
+        *cat += new MenuEntry("アイルーの装備変更", nullptr, CatBuki);
         *cat += new MenuEntry("アイルーの色変更", nullptr, CatColor);
         *cat += new MenuEntry("虹色アイルー", RaibowCat);
 
@@ -100,6 +102,7 @@ exit:
         menu += Item;
 
         MenuFolder *quest = new MenuFolder("クエスト");
+        *quest += new MenuEntry("無料のクエスト", nullptr, FreeQuest, "クエストがすべて無料になります。");
         *quest += new MenuEntry("クエスト中のプレイヤー名", nullptr, Quest_playerName, "クエスト中専用です");
         *quest += new MenuEntry("アイテムを釣る(関数)", fish_allitem, "上キーとAボタンでアイテム選択、\n下キーとAボタンで釣る。");
         *quest += new MenuEntry("アクション実行(関数)", excute_act, "上キーとLキーでid設定、\n下キーとLキーで実行。");
@@ -124,6 +127,7 @@ exit:
         MenuFolder *test = new MenuFolder("テストコード・没コード");
         *test += new MenuEntry("プレイヤーアップデート", UpdatePlayer);
         *test += new MenuEntry("Arm.cppを使ったアイテム減らない", nullptr, TestingArm);
+        *test += new MenuEntry("テキスト描画", drawText);
         menu += test;
 
         MenuFolder *debug = new MenuFolder("デバッグコード");

@@ -17,7 +17,7 @@ namespace CTRPluginFramework
 
     u32 get_money() {
         u32 value;
-        Process::Read32(0x00C85378, value);
+        Process::Read32(0x0ECD5B4, value);
         return value;
     }
 
@@ -58,6 +58,23 @@ namespace CTRPluginFramework
         Process::Write8(color_address + 0, blue);
         Process::Write8(color_address + 1, green);
         Process::Write8(color_address + 2, red);
+    }
+
+    void edit_cat_name(std::string catname) {
+        Process::WriteString(0x00ED69A8, catname, StringFormat::Utf16);
+    }
+
+    std::string get_cat_name() {
+        std::string string;
+        Process::ReadString(0x00ED69A8, string, 15, StringFormat::Utf16);
+        return string;
+    }
+
+    void edit_cat_soubi(u8 head, u8 body, u8 buki) {
+        u32 address = get_cat_struct_addres();    
+        Process::Write8(address + 0x46, head);
+        Process::Write8(address + 0x3e, body);
+        Process::Write8(address + 0x2c, buki);
     }
 
     void reload_guildcard() {
